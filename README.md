@@ -179,37 +179,3 @@ If you use this project, please cite:
   note    = {Manuscript under review}
 }
 ```
-
-
-| Source file | Used in README section | Reason for use |
-|---|---|---|
-| `NPUfly_map.png` | Representative Dataset Visualizations | Clear NPUFly dense map visualization |
-| `Jiada_map.png` | Representative Dataset Visualizations | Clear Jianda/Jiada dense map visualization |
-| `Dataset_jiada.png` | Representative Dataset Visualizations, Dataset Details | Multi-sequence Jianda/Jiada altitude and GPS/EXIF trajectory visualization |
-| `npufly_trajectory_error.png` | Representative Dataset Visualizations | NPUFly GPS/EXIF vs aligned SLAM trajectory and position error collage |
-| `jianda_trajectory_error.png` | Representative Dataset Visualizations | Jianda/Jiada GPS/EXIF vs aligned SLAM trajectory and position error collage |
-| `npufly_400_440_fig_abc.jpg` | Qualitative Results | Representative high-altitude/mixed-altitude trajectory panel |
-| `npufly_500_fig_abc.jpg` | Qualitative Results | Representative 500 m trajectory panel |
-| `Dataset_npufly.pdf` | Source inventory only | Figure-only PDF; GitHub README should use a PNG export if available |
-| `Dataset_jiada.pdf` | Source inventory only | PDF version of Jianda/Jiada dataset visualization |
-| `jiada_ground_500m_collage.pdf` | Source inventory only | Figure-only PDF; no extractable text in current inspection |
-| `npufly_400_440_fig_abc.pdf` | Source inventory only | PDF version of the NPUFly 400/440 panel |
-
-
-
-## Suggested Improved Filenames
-
-| Original filename | Suggested filename |
-|---|---|
-| `FFS_SLAM (11).pdf` | `paper/FFS_SLAM.pdf` |
-| `Dataset_npufly.pdf` | `assets/pdfs/dataset_npufly_altitude_trajectories.pdf` |
-| `Dataset_jiada.pdf` | `assets/pdfs/dataset_jianda_altitude_trajectories.pdf` |
-| `Dataset_jiada.png` | `assets/trajectories/jianda_altitude_trajectories.png` |
-| `jiada_ground_500m_collage.pdf` | `assets/pdfs/jianda_ground_500m_collage.pdf` |
-| `Jiada_map.png` | `assets/maps/jianda_map.png` |
-| `NPUfly_map.png` | `assets/maps/npufly_map.png` |
-| `jianda_trajectory_error.png` | `assets/trajectories/jianda_trajectory_error.png` |
-| `npufly_trajectory_error.png` | `assets/trajectories/npufly_trajectory_error.png` |
-| `npufly_400_440_fig_abc.jpg` | `assets/trajectories/npufly_400_440_trajectory_panels.jpg` |
-| `npufly_400_440_fig_abc.pdf` | `assets/pdfs/npufly_400_440_trajectory_panels.pdf` |
-| `npufly_500_fig_abc.jpg` | `assets/trajectories/npufly_500_trajectory_panels.jpg` |
