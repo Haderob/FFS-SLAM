@@ -36,19 +36,23 @@ The datasets are intended for **monocular UAV SLAM** and **dense Gaussian mappin
 
 ### NPUFly Reconstructed Map
 
-![NPUFly reconstructed Gaussian map](NPUfly_map.png)
+![NPUFly reconstructed Gaussian map](assets/maps/NPUFly_500.png)
 
 This visualization shows representative reconstructed outdoor UAV maps from NPUFly. It is useful as a high-level qualitative view of the dense Gaussian mapping output over roads, buildings, vegetation, and open outdoor areas.
 
 ### Jianda/Jiada Reconstructed Map
 
-![Jianda reconstructed Gaussian map](Jiada_map.png)
+![Jianda reconstructed Gaussian map](assets/maps/Jiada_map.png)
 
 This visualization shows representative reconstructed maps for the Jianda/Jiada dataset. It complements the NPUFly map by showing a different semi-urban outdoor scene with visible roads, building regions, vegetation, and open areas.
 
-### Jianda/Jiada GPS/EXIF Flight Trajectories
+### NPUFly GPS/EXIF Flight Trajectories
 
-![Jianda GPS EXIF flight trajectories](Dataset_jiada.png)
+![NPUFly GPS EXIF flight trajectories](assets/pdf/Dataset_npufly.jpg)
+
+### Jianda GPS/EXIF Flight Trajectories
+
+![Jianda GPS EXIF flight trajectories](assets/pdf/Dataset_jiada.png)
 
 This figure contains six 3D GPS/EXIF-derived flight visualizations with longitude, latitude, altitude, and elapsed time. The visible sequence labels are:
 
@@ -59,17 +63,17 @@ This figure contains six 3D GPS/EXIF-derived flight visualizations with longitud
 - `400_450`
 - `450_500`
 
-The figure is representative because it summarizes multiple Jianda/Jiada altitude patterns in one place, including constant-altitude and mixed-altitude flights. Altitude axes and sequence names indicate multi-altitude UAV acquisition, but exact frame counts and sensor metadata files are not included in the current folder.
+The figure is representative because it summarizes multiple Jianda altitude patterns in one place, including constant-altitude and mixed-altitude flights. Altitude axes and sequence names indicate multi-altitude UAV acquisition, but exact frame counts and sensor metadata files are not included in the current folder.
 
 ### NPUFly Trajectory and Position Error
 
-![NPUFly trajectory and position error](npufly_trajectory_error.png)
+![NPUFly trajectory and position error](assets/pdf/npufly_trajectory_error.jpg)
 
 This collage compares GPS/EXIF reference trajectories in an ENU frame with Sim(3)-aligned SLAM trajectories, together with per-frame position error curves. The visible sequence labels include `260_280`, `400_440`, and `500`. The figure supports the paper's trajectory evaluation discussion.
 
-### Jianda/Jiada Trajectory and Position Error
+### Jianda Trajectory and Position Error
 
-![Jianda trajectory and position error](jianda_trajectory_error.png)
+![Jianda trajectory and position error](assets/pdf/jianda_trajectory_error.png)
 
 This collage provides the same type of trajectory/error visualization for Jianda/Jiada. The visible panels include `280_260` and `300_location_3pm`. It is representative for explaining how GPS/EXIF reference trajectories and aligned SLAM trajectories are compared.
 
@@ -123,11 +127,11 @@ The paper also reports peak GPU memory and total wall-clock runtime on represent
 
 ### High-Altitude NPUFly Trajectory Examples
 
-![NPUFly 400 440 trajectory panels](npufly_400_440_fig_abc.jpg)
+![NPUFly 400 440 trajectory panels](assets/pdf/npufly_400_440_fig_abc.jpg)
 
 This figure shows NPUFly `400_440` trajectory/error panels. It is useful for inspecting a high-altitude or mixed-altitude sequence where the paper notes weak parallax and long-range UAV motion.
 
-![NPUFly 500 trajectory panels](npufly_500_fig_abc.jpg)
+![NPUFly 500 trajectory panels](assets/pdf/npufly_500_fig_abc.jpg)
 
 This figure shows NPUFly `500` trajectory/error panels. The paper discusses 500 m UAV evaluation as a challenging high-altitude case with limited parallax.
 
@@ -158,81 +162,13 @@ The paper reports runtime and peak GPU memory on NPUFly sequences. Runtime is wa
 
 These results support the paper's claim that submap streaming reduces peak GPU memory to approximately 11-12 GB across the reported NPUFly sequences, with moderate runtime overhead relative to the no-streaming variant.
 
-## Repository Structure
-
-The current folder is a flat collection of paper and visualization files. A recommended structure for release is:
-
-```text
-FFS-SLAM/
-├── README.md
-├── paper/
-│   └── FFS_SLAM.pdf
-├── assets/
-│   ├── maps/
-│   │   ├── npufly_map.png
-│   │   └── jianda_map.png
-│   ├── trajectories/
-│   │   ├── npufly_trajectory_error.png
-│   │   ├── jianda_trajectory_error.png
-│   │   ├── jianda_altitude_trajectories.png
-│   │   ├── npufly_400_440_trajectory_panels.jpg
-│   │   └── npufly_500_trajectory_panels.jpg
-│   └── pdfs/
-│       ├── dataset_npufly.pdf
-│       ├── dataset_jianda.pdf
-│       ├── jianda_ground_500m_collage.pdf
-│       └── npufly_400_440_trajectory_panels.pdf
-├── data/
-│   ├── NPUFly/
-│   │   └── <sequence>/
-│   │       ├── images/
-│   │       ├── timestamps.txt
-│   │       ├── intrinsics.txt
-│   │       ├── exif_or_gps.csv
-│   │       ├── trajectory_gps_enu.txt
-│   │       └── splits/
-│   └── Jianda/
-│       └── <sequence>/
-│           ├── images/
-│           ├── timestamps.txt
-│           ├── intrinsics.txt
-│           ├── exif_or_gps.csv
-│           ├── trajectory_gps_enu.txt
-│           └── splits/
-├── results/
-│   ├── rendering_metrics/
-│   ├── trajectory_metrics/
-│   ├── runtime_memory/
-│   └── qualitative/
-└── scripts/
-    ├── extract_exif_gps.py
-    ├── align_sim3.py
-    └── evaluate_ate.py
-```
-
-## Data Format
-
-The final dataset release should document the exact data format. Based on the paper and provided figures, the expected structure is:
-
-- `images/`: monocular RGB frames.
-- `timestamps.txt`: frame timestamps. Format TBD.
-- `intrinsics.txt`: camera intrinsics. Format TBD.
-- `exif_or_gps.csv`: GPS/EXIF metadata used to derive reference trajectories. Exact fields TBD.
-- `trajectory_gps_enu.txt`: GPS/EXIF-derived reference trajectory in ENU coordinates. Format TBD.
-- `splits/`: train/evaluation splits for rendering metrics. Format TBD.
-- `trajectory_slam_aligned.txt`: optional Sim(3)-aligned SLAM trajectory for reproduced evaluations. Format TBD.
-
-## Download
-
-Dataset release: **TBD / available upon acceptance**.
-
 Code release: **TBD**.
 
 Precomputed results and visualizations: **TBD**.
 
 ## Citation
 
-If you use this project or dataset, please cite:
+If you use this project, please cite:
 
 ```bibtex
 @article{hadero2026ffsslam,
@@ -244,19 +180,9 @@ If you use this project or dataset, please cite:
 }
 ```
 
-## License
-
-TBD.
-
-## Contact
-
-TBD.
-
-## Source Visualizations Used
 
 | Source file | Used in README section | Reason for use |
 |---|---|---|
-| `FFS_SLAM (11).pdf` | Paper, evaluation protocol, dataset summaries, runtime/memory | Main paper source |
 | `NPUfly_map.png` | Representative Dataset Visualizations | Clear NPUFly dense map visualization |
 | `Jiada_map.png` | Representative Dataset Visualizations | Clear Jianda/Jiada dense map visualization |
 | `Dataset_jiada.png` | Representative Dataset Visualizations, Dataset Details | Multi-sequence Jianda/Jiada altitude and GPS/EXIF trajectory visualization |
@@ -269,20 +195,7 @@ TBD.
 | `jiada_ground_500m_collage.pdf` | Source inventory only | Figure-only PDF; no extractable text in current inspection |
 | `npufly_400_440_fig_abc.pdf` | Source inventory only | PDF version of the NPUFly 400/440 panel |
 
-## Missing Information to Fill
 
-- Final repository URL.
-- Final paper link and publication venue.
-- Dataset download URL and release policy.
-- License for code, dataset, and figures.
-- Contact email or project maintainer.
-- Exact frame counts for Jianda/Jiada sequences.
-- Exact camera intrinsics and image resolution for each dataset.
-- Exact timestamp format.
-- Exact GPS/EXIF metadata fields and coordinate conversion procedure.
-- Train/test split protocol for rendering metrics.
-- Whether raw GPS/EXIF files or only derived ENU trajectories will be released.
-- Standalone qualitative comparison image from paper Fig. 3, if intended for the project page.
 
 ## Suggested Improved Filenames
 
